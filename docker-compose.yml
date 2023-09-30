@@ -1,0 +1,22 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: my-jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    user: root
+
+
+  nexus:
+    image: sonatype/nexus3
+    container_name: my-nexus
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+      - "8083:8083"
+    volumes:
+      - ./nexus-data:/nexus-data
+
